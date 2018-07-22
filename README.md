@@ -8,6 +8,7 @@ Libraries:
 * Architecture Component
 * Koin (Dependency Injection)
 * Retrofit
+* Room
 * RxJava
 * RxAndroid
 * Anko
