@@ -1,7 +1,7 @@
 package id.codepresso.mvvmiboilerplate.data
 
-import id.codepresso.mvvmiboilerplate.data.model.FootballTeam
-import io.reactivex.Flowable
+import id.codepresso.mvvmiboilerplate.data.local.entity.Team
+import io.reactivex.Single
 
 /**
  * Razib Kani Maulidan
@@ -9,5 +9,9 @@ import io.reactivex.Flowable
  */
 interface FootballTeamRepository {
 
-    fun getFootballTeam(teamName: String): Flowable<FootballTeam>
+    fun getFootballTeamApi(teamName: String): Single<List<Team>>
+
+    fun getFootballTeamDb(): Single<List<Team>>
+
+    fun saveFootballTeam(teams: List<Team>)
 }

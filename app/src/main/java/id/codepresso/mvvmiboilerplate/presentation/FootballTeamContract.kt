@@ -1,8 +1,7 @@
 package id.codepresso.mvvmiboilerplate.presentation
 
-import id.codepresso.mvvmiboilerplate.data.model.FootballTeam
-import id.codepresso.mvvmiboilerplate.data.model.Team
-import io.reactivex.Flowable
+import id.codepresso.mvvmiboilerplate.data.local.entity.Team
+import io.reactivex.Single
 
 /**
  * Razib Kani Maulidan
@@ -26,6 +25,6 @@ interface FootballTeamContract {
 
     interface Interactor {
 
-        fun getFootballTeam(teamName: String): Flowable<FootballTeam>
+        fun getFootballTeam(teamName: String): Single<List<Team>>
     }
 }

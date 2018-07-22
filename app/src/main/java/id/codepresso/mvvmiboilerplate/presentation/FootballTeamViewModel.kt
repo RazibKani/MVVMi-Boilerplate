@@ -2,7 +2,7 @@ package id.codepresso.mvvmiboilerplate.presentation
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import id.codepresso.mvvmiboilerplate.data.model.Team
+import id.codepresso.mvvmiboilerplate.data.local.entity.Team
 import id.codepresso.mvvmiboilerplate.util.SchedulersProvider
 
 /**
@@ -24,7 +24,7 @@ class FootballTeamViewModel(private val interactor: FootballTeamInteractor,
                 .subscribeOn(schedulers.io())
                 .subscribe({ result ->
                     isLoading.postValue(false)
-                    footballTeam.postValue(result.teams[0])
+                    footballTeam.postValue(result[0])
                 }, { error ->
                     isLoading.postValue(false)
                     isError.postValue(error)

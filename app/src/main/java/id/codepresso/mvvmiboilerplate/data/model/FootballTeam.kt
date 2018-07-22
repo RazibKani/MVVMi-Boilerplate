@@ -1,5 +1,6 @@
 package id.codepresso.mvvmiboilerplate.data.model
 import com.google.gson.annotations.SerializedName
+import id.codepresso.mvvmiboilerplate.data.local.entity.Team
 
 /**
  * Razib Kani Maulidan
@@ -7,10 +8,4 @@ import com.google.gson.annotations.SerializedName
  */
 data class FootballTeam(
     @SerializedName("teams") val teams: List<Team>
-)
-
-data class Team(
-    @SerializedName("idTeam") val idTeam: String,
-    @SerializedName("strTeam") val strTeam: String,
-    @SerializedName("strTeamBadge") val strTeamBadge: String
 )

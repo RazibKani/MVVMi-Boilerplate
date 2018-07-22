@@ -1,8 +1,8 @@
 package id.codepresso.mvvmiboilerplate.presentation
 
 import id.codepresso.mvvmiboilerplate.data.FootballTeamRepositoryImpl
-import id.codepresso.mvvmiboilerplate.data.model.FootballTeam
-import io.reactivex.Flowable
+import id.codepresso.mvvmiboilerplate.data.local.entity.Team
+import io.reactivex.Single
 
 /**
  * Razib Kani Maulidan
@@ -11,7 +11,19 @@ import io.reactivex.Flowable
 class FootballTeamInteractor(private val repository: FootballTeamRepositoryImpl)
     : FootballTeamContract.Interactor {
 
-    override fun getFootballTeam(teamName: String): Flowable<FootballTeam> {
-        return repository.getFootballTeam(teamName)
+    override fun getFootballTeam(teamName: String): Single<List<Team>> {
+        return Single
+                .concat(diskWithCache, getNetworkWithSave(teamName))
+                .filter { teams -> teams.isNotEmpty() }
+                .first(ArrayList())
     }
+
+    private fun getNetworkWithSave(teamName: String): Single<List<Team>> {
+        return repository.getFootballTeamApi(teamName)
+                .doOnSuccess {
+                    repository.saveFootballTeam(it)
+                }
+    }
+
+    private var diskWithCache = repository.getFootballTeamDb()
 }

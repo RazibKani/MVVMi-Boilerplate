@@ -17,4 +17,8 @@ class SchedulersProvider {
     fun io(): Scheduler {
         return Schedulers.io()
     }
+
+    fun computation(): Scheduler {
+        return Schedulers.computation()
+    }
 }

@@ -4,7 +4,8 @@ import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import id.codepresso.mvvmiboilerplate.R
-import id.codepresso.mvvmiboilerplate.data.model.Team
+import id.codepresso.mvvmiboilerplate.data.local.entity.Team
+import id.codepresso.mvvmiboilerplate.util.Config
 import id.codepresso.mvvmiboilerplate.util.hide
 import id.codepresso.mvvmiboilerplate.util.loadImage
 import id.codepresso.mvvmiboilerplate.util.visible
@@ -30,7 +31,7 @@ class FootballTeamActivity : AppCompatActivity(), FootballTeamContract.View {
             footballTeam.observe(this@FootballTeamActivity, Observer<Team> { team -> observeFootballTeam(team) })
         }
 
-        viewModel.getFootballTeam(getString(R.string.team_name))
+        viewModel.getFootballTeam(Config.TEAM_NAME)
     }
 
     override fun observeLoading(isLoading: Boolean?) {
