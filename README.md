@@ -13,3 +13,6 @@ Libraries:
 * RxAndroid
 * Anko
 * Picasso
+
+@Todo
+- Unit Test
