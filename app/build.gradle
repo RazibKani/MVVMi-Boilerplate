@@ -24,11 +24,11 @@ android {
 project.ext {
     supportLibraryVersion = "27.1.1"
     constraintLayoutVersion = "1.1.2"
-    koinVersion = "0.9.3"
+    koinVersion = "1.0.0-beta-3"
     retrofitVersion = "2.4.0"
     rxJavaVersion = "2.1.9"
     rxAndroidVersion = "2.0.2"
-    lifecycleVersion = "1.0.0-beta1"
+    lifecycleVersion = "1.1.1"
     roomVersion = "1.1.1"
     ankoVersion = "0.10.5"
     picassoVersion = "2.5.2"
@@ -42,7 +42,7 @@ dependencies {
 
     implementation "android.arch.lifecycle:extensions:$project.lifecycleVersion"
 
-    implementation "org.koin:koin-android-architecture:$project.koinVersion"
+    implementation "org.koin:koin-android-viewmodel:$project.koinVersion"
 
     implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"

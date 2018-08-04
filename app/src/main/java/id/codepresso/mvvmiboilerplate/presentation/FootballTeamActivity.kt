@@ -5,13 +5,15 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import id.codepresso.mvvmiboilerplate.R
 import id.codepresso.mvvmiboilerplate.data.local.entity.Team
+import id.codepresso.mvvmiboilerplate.di.Scope
 import id.codepresso.mvvmiboilerplate.util.Config
 import id.codepresso.mvvmiboilerplate.util.hide
 import id.codepresso.mvvmiboilerplate.util.loadImage
 import id.codepresso.mvvmiboilerplate.util.visible
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
-import org.koin.android.architecture.ext.viewModel
+import org.koin.android.scope.ext.android.scopedWith
+import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  * Razib Kani Maulidan
@@ -24,6 +26,8 @@ class FootballTeamActivity : AppCompatActivity(), FootballTeamContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        scopedWith(Scope.FOOTBALL_TEAM)
 
         viewModel.apply {
             isLoading.observe(this@FootballTeamActivity, Observer<Boolean> { isLoading -> observeLoading(isLoading) })

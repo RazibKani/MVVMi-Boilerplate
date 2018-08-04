@@ -1,6 +1,7 @@
 package id.codepresso.mvvmiboilerplate
 
 import android.app.Application
+import id.codepresso.mvvmiboilerplate.di.activityModule
 import id.codepresso.mvvmiboilerplate.di.appModule
 import org.koin.android.ext.android.startKoin
 
@@ -13,6 +14,6 @@ class MVVMiBoilerplateApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        startKoin(this, listOf(appModule))
+        startKoin(this, listOf(appModule, activityModule))
     }
 }
