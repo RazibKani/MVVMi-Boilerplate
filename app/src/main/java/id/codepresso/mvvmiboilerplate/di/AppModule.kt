@@ -4,9 +4,12 @@ import android.arch.persistence.room.Room
 import id.codepresso.mvvmiboilerplate.data.FootballTeamRepositoryImpl
 import id.codepresso.mvvmiboilerplate.data.local.MVVMiDb
 import id.codepresso.mvvmiboilerplate.data.remote.ApiServices
+import id.codepresso.mvvmiboilerplate.presentation.FootballTeamInteractor
+import id.codepresso.mvvmiboilerplate.presentation.FootballTeamViewModel
 import id.codepresso.mvvmiboilerplate.util.Config
 import id.codepresso.mvvmiboilerplate.util.SchedulersProvider
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 /**
@@ -24,4 +27,9 @@ val appModule = module {
                 .build()
     }
     single { get<MVVMiDb>().teamDao() }
+
+    module(Scope.FOOTBALL_TEAM) {
+        factory { FootballTeamInteractor(get()) }
+        viewModel { FootballTeamViewModel(get(), get()) }
+    }
 }
